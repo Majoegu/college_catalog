@@ -54,38 +54,37 @@ input {
 }
 
 /* Item List */
-.item-list {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
+#item-list {
+    
+    flex-direction: column;
+    gap: 10px; /* Adds space between rows */
 }
 
-.itemList{
-    background: #2a2a3c;
+#itemList{
+    display: flex;
+    background-color: #2f2f38;
     padding: 15px;
     margin: 8px 0;
     border-radius: 8px;
-    display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.item-list img {
-    width: 50px;
-    height: auto;
-    border-radius: 5px;
-    margin-right: 10px;
+.li{
+    justify-content: left;
 }
 
-.item-text {
-    flex-grow: 1;
+.item-text{
+    width: 80%;
     text-align: left;
-    font-size: 14px;
+
 }
 
 .edit-btn {
     background: #ffa600;
+   
+
 }
 
 .edit-btn:hover {
@@ -94,11 +93,22 @@ input {
 
 .delete-btn {
     background: #ff5252;
+    
+    
 }
 
 .delete-btn:hover {
     background: #ff2e2e;
 }
+
+.edit-btn, .delete-btn {
+    min-width: 70px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+
 
 /* Modal Styling */
 .modal {
