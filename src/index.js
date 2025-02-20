@@ -9,9 +9,9 @@ const Item = require("../models/item"); // Ensure this file exists
 const app = express();
 
 //Start the server
-const port = 5000;
-app.listen(port, ()=> {
-    console.log('server running on port: ${port}')
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, ()=> {
+    console.log('server running on port: ${PORT}')
 })
 
 //Middleware to parse form data (converting data into json format)
@@ -26,7 +26,7 @@ app.use(express.static("public"));
 
 //configure session
 app.use(session({
-    secret:"payakumbuah",
+    secret: process.env.SESSION_SECRET || "fallback_secret"
     resave: false,
     saveUninitialized:false,
     cookie:{secure:false}//set to true if using https
