@@ -1,0 +1,129 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f8ff;
+  }
+  
+  .container  {
+    text-align: center;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+  }
+  
+  input {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Character */
+  .character {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .head {
+    background-color: #ffeb3b;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: relative;
+    margin: 0 auto;
+  }
+  
+  .eyes {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .eye {
+    background-color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  }
+  
+  .eye.left {
+    background-color: #000;
+  }
+  
+  .eye.right {
+    background-color: #000;
+  }
+  
+  /* Default Mouth (Poker Face) */
+  .mouth {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #000;
+    transition: background-color 1s, border-radius 1s, box-shadow 1s;
+  }
+  
+  /* Body */
+  .body {
+    background-color: #ffeb3b;
+    width: 60px;
+    height: 80px;
+    margin-top: 20px;
+    border-radius: 30px;
+    margin: 20px auto;
+  }
+
+/* Smile and Frown Animation */
+.frown {
+    background-color: #f44336;
+    border-radius: 90% 90% 0 0;
+    box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
+  }
+  
+  .smile {
+    background-color: #f44336;
+    border-radius: 0 0 90% 90%;
+    box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.2);
+  }
+  
+
+/* Make sure the result and button align properly */
+#result {
+    margin-top: 20px;
+  }
+  
+  #continueBtn {
+    margin-top: 20px;
+    text-align: center;
+  }
