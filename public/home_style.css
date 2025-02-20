@@ -29,6 +29,20 @@ body {
     border-radius: 10px;
 }
 
+
+.logout-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    
+}
+
+
+
+
+
+/* MODAL */
+
 .modal {
     display: none;
     position: fixed;
@@ -39,27 +53,49 @@ body {
     background: rgba(0, 0, 0, 0.8);
     justify-content: center;
     align-items: center;
+    overflow-y: auto;
 }
 
 .modal-content {
     background: rgba(20, 20, 30, 0.95);
     color: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 80%;
-    max-width: 60%;
-    text-align: left;
-    position: relative;
+    padding: 25px;
+    width: 70%;
+    max-width: 70%;
+    border-radius: 5px;
+    text-align: center;
     overflow-y: scroll;
     max-height: 80vh;
+    position: relative;
+    box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.2);
 }
 
-#modalTitle {
-font-size: 26px;
-font-weight: bold;
-text-align: center;
-margin-top: 10px;
+
+/* Close Button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 30px;
+    font-weight: bold;
+    transition: 0.3s;
+    padding: 5px;
+    color: white;
+    border-radius: 5px;
 }
+
+.close:hover {
+    color: #ff4b5c;
+}
+
+
+
+#modalImage {
+    max-width: 80px;
+    height: auto;
+}
+
 #modalImage{
     width: 150px; /* Adjust logo size */
     height: auto;
@@ -71,31 +107,97 @@ margin-top: 10px;
     border: 5px solid #444;
 }
 
-#campusImage {
-    display:block;
-width: 90%; /* Full width */
-height:auto;/* Adjust height */
-border-radius: 5px;
-margin: 0 auto;
+
+
+
+#modalTitle {
+font-size: 26px;
+font-weight: bold;
+text-align: center;
+margin-top: 10px;
+
+
 }
 
 
+#campusImage {
+    width: 100%; /* Full width */
+    display:block;
+    height:auto;/* Adjust height */
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin: 5vh auto 5vh auto;
+}
 
-.close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-size: 18px;
-    background: red;
-    padding: 5px;
-    color: white;
+
+/* Flex Container for Two or Three Blocks */
+.modal-flex {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+
+/* Individual Boxes */
+.modal-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    flex: 1;
+    text-align: left;
+}
+
+/* Full-Width Section */
+.modal-full {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+
+/* Section Titles */
+.modal-box p strong, .modal-full p strong {
+    display: block;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #c1ba9e;
+}
+
+
+/* List Styling */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    background: rgba(255, 255, 255, 0.06);
+    margin: 5px 0;
+    padding: 5px 10px;
     border-radius: 5px;
 }
 
-.logout-container {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    
+/* Scrollbar Track */
+::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+}
+
+/* Scrollbar Thumb (the moving part) */
+::-webkit-scrollbar-thumb {
+    background: #555; /* Dark gray thumb */
+    border-radius: 4px;
+}
+
+/* Scrollbar Track (the background behind the thumb) */
+::-webkit-scrollbar-track {
+    background: #222; /* Darker background */
+}
+
+/* Scrollbar on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #888; /* Lighter gray when hovered */
 }
