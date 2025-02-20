@@ -82,6 +82,7 @@ app.post("/signup", async(req,res)=>{
 
         const userdata = await collection.insertMany(data);
         console.log(userdata);
+        res.redirect("/login"); //Redirect to login page after successful signup
 
     }
 });
