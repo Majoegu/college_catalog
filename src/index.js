@@ -26,7 +26,7 @@ app.use(express.static("public"));
 
 //configure session
 app.use(session({
-    secret: process.env.SESSION_SECRET || "fallback_secret"
+    secret: process.env.SESSION_SECRET || "fallback_secret",
     resave: false,
     saveUninitialized:false,
     cookie:{secure:false}//set to true if using https
