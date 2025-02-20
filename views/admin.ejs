@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="/admin_style.css">
+</head>
+<body>
+
+   
+        <h1>Admin Panel</h1>
+        <button onclick="logout()">Logout</button>
+
+        <div class="container">
+        <h2>Add New University</h2>
+        <input type="text" id="name" placeholder="University Name">
+        <select id="status">
+            <option value="applied">Applied</option>
+            <option value="will apply">Will Apply</option>
+            <option value="considering">Considering</option>
+        </select>
+        <select id="category">
+            <option value="target">Target</option>
+            <option value="reach">Reach</option>
+            <option value="safety">Safety</option>
+        </select>
+        <input type="text" id="ranking" placeholder="Ranking (e.g., #3 in CS)">
+        <textarea id="whyThisUniversity" placeholder="Why this university?"></textarea>
+        <input type="text" id="programOfInterest" placeholder="Program">
+        <input type="text" id="tuition" placeholder="Tuition (e.g., $62,000/year)">
+        <input type="text" id="estimatedTotalCost" placeholder="Total Cost (e.g., ~$80,000/year)">
+        <input type="text" id="scholarships" placeholder="Scholarships (if any)">
+        <textarea id="campusEnvironment" placeholder="Campus Environment"></textarea>
+        <textarea id="careerImpact" placeholder="Career/Alumni Impact"></textarea>
+        <textarea id="pros" placeholder="Pros"></textarea>
+        <textarea id="cons" placeholder="Cons"></textarea>
+        <input type="text" id="sources" placeholder="Sources (comma separated URLs)">
+        <input type="text" id="image" placeholder="Image URL (optional)">
+        <input type="text" id="cImage" placeholder="Campus Image URL">
+        <button onclick="addItem()">Add Item</button>
+
+       
+    </div>
+    <div id="itemList"> 
+        <h2>Item List</h2>
+        <ul id="itemList" class="item-list"></ul>
+    </div>
+
+
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEditModal()">X</span>
+            <h2>Edit University</h2>
+            <input type="hidden" id="editItemId">
+            <input type="text" id="editName" placeholder="University Name">
+            <select id="editStatus">
+                <option value="applied">Applied</option>
+                <option value="will apply">Will Apply</option>
+                <option value="considering">Considering</option>
+            </select>
+            <select id="editCategory">
+                <option value="target">Target</option>
+                <option value="reach">Reach</option>
+                <option value="safety">Safety</option>
+            </select>
+            <input type="text" id="editRanking" placeholder="Ranking">
+            <textarea id="editWhy" placeholder="Why this university?"></textarea>
+            <input type="text" id="editProgram" placeholder="Program">
+            <input type="text" id="editTuition" placeholder="Tuition">
+            <input type="text" id="editTotalCost" placeholder="Total Cost">
+            <input type="text" id="editScholarships" placeholder="Scholarships">
+            <textarea id="editCampus" placeholder="Campus Environment"></textarea>
+            <textarea id="editCareer" placeholder="Career Impact"></textarea>
+            <textarea id="editPros" placeholder="Pros"></textarea>
+            <textarea id="editCons" placeholder="Cons"></textarea>
+            <input type="text" id="editSources" placeholder="Sources (comma separated URLs)">
+            <input type="text" id="editImage" placeholder="Logo Image URL">
+            <input type="text" id="editCImage" placeholder="Campus Image URL">
+            <button onclick="saveEdit()">Save Changes</button>
+        </div>
+    </div>
+
+    <script>
+        async function fetchItems() {
+            const res = await fetch("/items");
+            const items = await res.json();
+            const itemList = document.getElementById("itemList");
+            itemList.innerHTML = "";
+
+            items.forEach(item => {
+                itemList.innerHTML += `
+                     <li>
+            <img src="${item.image}" width="50"> 
+            <div class="item-text">
+                <strong>${item.name}</strong> - ${item.category}
+            </div>
+            <button class="edit-btn" onclick="openEditModal(
+                '${item._id}', 
+                '${item.name}', 
+                '${item.status}', 
+                '${item.category}', 
+                '${item.ranking}', 
+                '${item.whyThisUniversity}', 
+                '${item.programOfInterest}', 
+                '${item.financialEstimate.tuition}', 
+                '${item.financialEstimate.estimatedTotalCost}', 
+                '${item.financialEstimate.scholarships}', 
+                '${item.campusEnvironment}', 
+                '${item.careerImpact}', 
+                '${item.pros}', 
+                '${item.cons}', 
+                '${item.sources}', 
+                '${item.image}', 
+                '${item.cImage}'
+            )">Edit</button>
+            <button class="delete-btn" onclick="deleteItem('${item._id}')">Delete</button>
+        </li>
+    `;
+            });
+        }
+
+        function openEditModal(id,name, status, category, ranking, whyThisUniversity, programOfInterest, tuition, estimatedTotalCost, scholarships, campusEnvironment, careerImpact, pros, cons, sources, image, cImage ) {
+            document.getElementById("editItemId").value = id;
+            document.getElementById("editName").value = name;
+            document.getElementById("editStatus").value = status;
+            document.getElementById("editCategory").value = category;
+            document.getElementById("editRanking").value = ranking;
+            document.getElementById("editWhy").value = whyThisUniversity;
+            document.getElementById("editProgram").value = programOfInterest; 
+            document.getElementById("editTuition").value = tuition;
+            document.getElementById("editTotalCost").value = estimatedTotalCost;
+            document.getElementById("editScholarships").value = scholarships;
+            document.getElementById("editCampus").value = campusEnvironment;
+            document.getElementById("editCareer").value = careerImpact;
+            document.getElementById("editPros").value = Array.isArray(pros) ? pros.join(", ") : pros;
+            document.getElementById("editCons").value = Array.isArray(cons) ? cons.join(", ") : cons;
+
+
+            // document.getElementById("editPros").value = pros;
+            // document.getElementById("editCons").value = cons;
+            document.getElementById("editSources").value = Array.isArray(sources) ? sources.join(", ") : sources;
+
+            document.getElementById("editImage").value = image;
+            document.getElementById("editCImage").value = cImage;
+            document.getElementById("editModal").style.display = "flex";
+        }
+
+
+
+        function closeEditModal() {
+            document.getElementById("editModal").style.display = "none";
+        }
+
+    
+
+        async function saveEdit() {
+    const id = document.getElementById("editItemId").value;
+    const updatedItem = {
+        name: document.getElementById("editName").value,
+        status: document.getElementById("editStatus").value,
+        category: document.getElementById("editCategory").value,
+        ranking: document.getElementById("editRanking").value,
+        whyThisUniversity: document.getElementById("editWhy").value,
+        programOfInterest: document.getElementById("editProgram").value,
+        financialEstimate: {
+            tuition: document.getElementById("editTuition").value,
+            estimatedTotalCost: document.getElementById("editTotalCost").value,
+            scholarships: document.getElementById("editScholarships").value
+        },
+        campusEnvironment: document.getElementById("editCampus").value,
+        careerImpact: document.getElementById("editCareer").value,
+        // pros: document.getElementById("editPros").value,
+        // cons: document.getElementById("editCons").value,
+
+        pros: document.getElementById("editPros").value
+            .split(",")  // Convert string to array
+            .map(item => item.trim()) // Trim whitespace from each entry
+            .filter(item => item !== ""), // Remove empty values
+        cons: document.getElementById("editCons").value
+            .split(",")
+            .map(item => item.trim())
+            .filter(item => item !== ""),
+
+        sources: document.getElementById("editSources").value
+            .split(",")
+            .map(item => item.trim())
+            .filter(item => item !== ""),
+
+        image: document.getElementById("editImage").value,
+        cImage: document.getElementById("editCImage").value
+    };
+
+    try {
+        const res = await fetch(`/admin/items/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(updatedItem)
+        });
+
+        const data = await res.json();
+        alert(data.message || "University updated successfully!");
+        closeEditModal();
+        fetchItems();
+    } catch (error) {
+        console.error("Error updating item:", error);
+    }
+}
+
+  
+
+        async function addItem() {
+            const name = document.getElementById("name").value;
+            const cImage = document.getElementById("cImage").value;
+            const status = document.getElementById("status").value;
+            const category = document.getElementById("category").value;
+            const ranking = document.getElementById("ranking").value;
+            const whyThisUniversity = document.getElementById("whyThisUniversity").value;
+            const programOfInterest = document.getElementById("programOfInterest").value;
+            const tuition = document.getElementById("tuition").value;
+            const estimatedTotalCost = document.getElementById("estimatedTotalCost").value;
+            const scholarships = document.getElementById("scholarships").value;
+            const campusEnvironment = document.getElementById("campusEnvironment").value;
+            const careerImpact = document.getElementById("careerImpact").value;
+            const pros = document.getElementById("pros").value
+             .split(",")
+             .map(item => item.trim())
+             .filter(item => item !== "");
+             const cons = document.getElementById("cons").value
+             .split(",")
+             .map(item => item.trim())
+              .filter(item => item !== "");
+              const sources = document.getElementById("sources").value
+             .split(",")
+             .map(item => item.trim())
+              .filter(item => item !== "");
+
+            // const pros = document.getElementById("pros").value;
+            // const cons = document.getElementById("cons").value;
+
+          
+            const image = document.getElementById("image").value;
+            
+            const newItem = {
+                name,
+                status,
+                category,
+                ranking,
+                whyThisUniversity,
+                programOfInterest,
+                financialEstimate: {
+                    tuition,
+                    estimatedTotalCost,
+                    scholarships
+                },
+                campusEnvironment,
+                careerImpact,
+                pros,
+                cons,
+                sources,
+                image,
+                cImage
+    };
+
+
+    try {
+        const res = await fetch("/admin/items", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newItem)
+        });
+
+        const data = await res.json();
+        alert(data.message || "University added successfully!");
+
+        // Clear input fields after adding
+        document.querySelectorAll("input, textarea").forEach(input => input.value = "");
+
+        // Refresh the list
+        fetchItems();
+    } catch (error) {
+        console.error("Error adding item:", error);
+    }
+}
+
+
+        async function deleteItem(id) {
+            const res = await fetch(`/admin/items/${id}`, { method: "DELETE" });
+            const data = await res.json();
+            // alert(data.message);
+            fetchItems();
+        }
+
+        async function logout() {
+            await fetch("/admin/logout", { method: "POST" });
+            alert("Logged out successfully");
+            window.location.href = "/login";
+        }
+
+        window.onload = fetchItems;
+    </script>
+
+</body>
+</html>

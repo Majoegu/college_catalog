@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Catalog</title>
+    <link rel="stylesheet" href="/home_style.css">
+</head>
+<body>
+
+    <!-- Logout Button -->
+    <div class="logout-container">
+        <form id="logoutForm" action="/logout" method="POST">
+            <button type="submit">Log Out</button>
+        </form>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <h1>University Catalog</h1>
+
+    <div class="catalog">
+        <% items.forEach(item => { %>
+            <div class="item" onclick="openModal(
+                '<%= item.name %>', 
+                '<%= item.status %>', 
+                '<%= item.category %>', 
+                '<%= item.ranking %>',
+                '<%= item.whyThisUniversity %>',
+                '<%= item.programOfInterest %>',
+                '<%= item.financialEstimate.tuition %>', 
+                '<%= item.financialEstimate.estimatedTotalCost %>', 
+                '<%= item.financialEstimate.scholarships %>', 
+                '<%= item.campusEnvironment %>', 
+                '<%= item.careerImpact %>', 
+                '<%= JSON.stringify(item.pros || []) %>', 
+                '<%= JSON.stringify(item.cons || []) %>',
+                '<%= item.image %>', 
+                '<%= item.cImage %>',
+                '<%= JSON.stringify(item.sources || []) %>',
+            )">
+                <img src="<%= item.image %>" alt="<%= item.name %>">
+                
+
+                <h3><%= item.name %></h3>
+            </div>
+        <% }); %>
+    </div>
+    
+    
+
+    <!-- Modal for item details -->
+    <div id="itemModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">X</span>
+            <h2 id="modalTitle"></h2>
+            <img id="modalImage" src="" alt="">
+             <img id="campusImage" src="" alt="Campus Image"> 
+
+
+            <p><strong>Status:</strong> <span id="modalStatus"></span></p>
+            <p><strong>Category:</strong> <span id="modalCategory"></span></p>
+            <p><strong>Ranking:</strong> <span id="modalRanking"></span></p>
+            <p><strong>Why This University?</strong> <span id="modalWhy"></span></p>
+            <p><strong>Programs of Interest:</strong> <span id="modalPrograms"></span></p>
+            <p><strong>Financial Estimate:</strong> 
+                Tuition: <span id="modalTuition"></span>, 
+                Total Cost: <span id="modalTotalCost"></span>, 
+                Scholarships: <span id="modalScholarships"></span>
+            </p>
+            <p><strong>Campus Environment:</strong> <span id="modalCampus"></span></p>
+            <p><strong>Career/Alumni Impact:</strong> <span id="modalCareer"></span></p>
+            <p><strong>Pro:</strong> <span id="modalPros"></span></p>
+            <p><strong>Cons:</strong> <span id="modalCons"></span></p>
+            <p><strong>Sources:</strong> <span id="modalSources"></span></p>
+        </div>
+    </div>
+
+    <script>
+   
+
+
+function formatList(items) {
+    if (!Array.isArray(items) || items.length === 0) {
+        return "<p>None</p>";
+    }
+    return "<ul>" + items.map(item => `<li>${item}</li>`).join('') + "</ul>";
+}
+
+
+        function openModal(title, status, category, ranking, whyThisUniversity, programOfInterest, tuition, totalCost, scholarships, campus, career, pros, cons, image, cImage, sources) {
+            
+            // Ensure pros and cons are arrays
+            if (typeof pros === "string") pros = JSON.parse(pros);
+            if (typeof cons === "string") cons = JSON.parse(cons);
+            if (typeof sources === "string") sources = JSON.parse(sources);
+           
+           
+            console.log("Campus Image URL:", cImage);
+            document.getElementById("modalTitle").innerText = title;
+            document.getElementById("campusImage").src = cImage;
+            document.getElementById("modalImage").src = image;
+            document.getElementById("modalStatus").innerText = status;
+            document.getElementById("modalCategory").innerText = category;
+            document.getElementById("modalRanking").innerText = ranking;
+            document.getElementById("modalWhy").innerText = whyThisUniversity;
+            document.getElementById("modalPrograms").innerText = programOfInterest;
+            document.getElementById("modalTuition").innerText = tuition;
+            document.getElementById("modalTotalCost").innerText = totalCost;
+            document.getElementById("modalScholarships").innerText = scholarships;
+            document.getElementById("modalCampus").innerText = campus;
+            document.getElementById("modalCareer").innerText = career;
+
+             // Convert string arrays back to lists
+             document.getElementById("modalPros").innerHTML = formatList(pros);
+             document.getElementById("modalCons").innerHTML = formatList(cons);
+             document.getElementById("modalSources").innerHTML = formatList(sources);
+
+          
+            document.getElementById("itemModal").style.display = "flex";
+        
+            // Disable scrolling on the background
+            document.body.style.overflow = "hidden";
+            
+              // Handle missing campus image with default
+    if (cImage) {
+        document.getElementById("campusImage").src = cImage;
+    } else {
+        document.getElementById("campusImage").src = "/images/default-campus.jpeg"; // Fallback
+    }
+
+    console.log("Sources received in modal:", sources);
+}
+        
+
+        function closeModal() {
+            document.getElementById("itemModal").style.display = "none";
+
+            // Re-enable scrolling on the background
+            document.body.style.overflow = "auto";
+        }
+
+    </script>
+
+</body>
+</html>

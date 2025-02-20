@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>function checkAnswer() {
+    const userAnswer = document.getElementById("answer").value.trim().toLowerCase();
+    const correctAnswer = "pizza"; // The correct answer (you can change it)
+  
+    const mouth = document.getElementById("mouth"); // This targets the mouth element
+    const result = document.getElementById("result"); // This targets the result text
+    const continueBtn = document.getElementById("continueBtn"); // Get the "Continue to home" button
+
+  
+    if (userAnswer === correctAnswer) {
+      // Correct answer, change mouth to smile
+      mouth.classList.add("smile"); // Add the smile class
+      mouth.classList.remove("frown"); // Remove the frown class if it exists
+      result.textContent = "Correct! Andy is smiling.";
+      result.style.color = "green"; // Change result text color to green
+      
+      //display the "continue" button once the answer is correct.
+      continueBtn.style.display="block";
+      
+    } else {
+      // Incorrect answer, change mouth to frown
+      mouth.classList.add("frown"); // Add the frown class
+      mouth.classList.remove("smile"); // Remove the smile class if it exists
+      result.textContent = "Incorrect! Andy is not happy.";
+      result.style.color = "red"; // Change result text color to red
+      continueBtn.style.display="none";
+
+    }
+  }
+
+  function goToHomePage() {
+  window.location.href = "/home"; // Replace "/home" with the URL of your main page
+}
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verification Page</title>
+  <link rel="stylesheet" href="/verification_style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>What is Andy's favorite food?</h1>
+    <input type="text" id="answer" placeholder="Type your answer here" />
+    <button onclick="checkAnswer()">Submit</button>
+
+    <div class="character">
+      <div class="head">
+        <div class="eyes">
+          <div class="eye left"></div>
+          <div class="eye right"></div>
+        </div>
+        <div id="mouth" class="mouth"></div>
+      </div>
+      <div class="body"></div>
+    </div>
+
+    <p id="result"></p>
+    <button id="continueBtn" style="display:none;" onclick="goToHomePage()">Continue to Home Page</button>
+  </div>
+
+  
+</body>
+</html>
