@@ -60,28 +60,87 @@
     <div id="itemModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">X</span>
-            <h2 id="modalTitle"></h2>
-            <img id="modalImage" src="" alt="">
+
+
+            <!-- University Header -->
+            
+                <img id="modalImage" src="" alt="University Logo">
+                <h2 id="modalTitle"></h2>
+                
+     
+            
              <img id="campusImage" src="" alt="Campus Image"> 
 
 
-            <p><strong>Status:</strong> <span id="modalStatus"></span></p>
-            <p><strong>Category:</strong> <span id="modalCategory"></span></p>
-            <p><strong>Ranking:</strong> <span id="modalRanking"></span></p>
-            <p><strong>Why This University?</strong> <span id="modalWhy"></span></p>
-            <p><strong>Programs of Interest:</strong> <span id="modalPrograms"></span></p>
-            <p><strong>Financial Estimate:</strong> 
-                Tuition: <span id="modalTuition"></span>, 
-                Total Cost: <span id="modalTotalCost"></span>, 
-                Scholarships: <span id="modalScholarships"></span>
-            </p>
-            <p><strong>Campus Environment:</strong> <span id="modalCampus"></span></p>
-            <p><strong>Career/Alumni Impact:</strong> <span id="modalCareer"></span></p>
-            <p><strong>Pro:</strong> <span id="modalPros"></span></p>
-            <p><strong>Cons:</strong> <span id="modalCons"></span></p>
-            <p><strong>Sources:</strong> <span id="modalSources"></span></p>
+             <!-- First Row: Left & Right Blocks -->
+
+             <div class="modal-flex">
+
+                <div class="modal-box">
+                <p><strong>Category:</strong> <span id="modalCategory"></span></p>
+                <p><strong>Ranking:</strong> <span id="modalRanking"></span></p>
+             </div>
+
+             <div class="modal-box">
+                <p><strong>Status:</strong> <span id="modalStatus"></span></p>
+                <p><strong>Programs of Interest:</strong> <span id="modalPrograms"></span></p>
+             </div>
+
+            </div>
+            
+            
+            <!-- Full-Width Block for "Why This University?" -->
+            <div class="modal-full">
+                <p><strong>Why This University?</strong> </p>
+                <p id="modalWhy"></p>
+            </div>
+            
+            <!-- Second Row: Financial Details, Campus, Career -->
+             <div class="modal-flex">
+
+                <div class="modal-box">
+                    <p><strong>💰 Financial Estimate:</strong></p>
+                    <ul>
+                        <li>Tuition: <span id="modalTuition"></span></li>
+                        <li>Total Cost: <span id="modalTotalCost"></span></li>
+                        <li>Scholarships: <span id="modalScholarships"></span></li>
+                    </ul>
+                </div>
+
+
+                <div class="modal-box">
+                    <p><strong>Campus Environment:</strong></p>
+                    <p id="modalCampus"></p>
+                </div>
+
+                <div class="modal-box">
+                    <p><strong>Career/Alumni Impact:</strong></p>
+                    <p id="modalCareer"></p>
+
+                </div>
+             </div>
+            
+
+               <!-- Pros & Cons Block -->
+        <div class="modal-flex">
+            <div class="modal-box">
+                <p><strong>✅ Pros:</strong></p>
+                <ul id="modalPros"></ul>
+            </div>
+            <div class="modal-box">
+                <p><strong>❌ Cons:</strong></p>
+                <ul id="modalCons"></ul>
+            </div>
+        </div>
+            
+          
+           <!-- Sources Block -->
+        <div class="modal-full">
+            <p><strong>🔗 Sources:</strong></p>
+            <ul id="modalSources"></ul>
         </div>
     </div>
+</div>
 
     <script>
    
