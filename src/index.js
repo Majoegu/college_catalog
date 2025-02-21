@@ -254,13 +254,7 @@ app.put("/admin/items/:id", async (req, res) => {
 
 
 
-//MAJOEGU WAS HERE
 
+//gahahadhahbahaababbabab
 
-
-//MAJOEGU WAS ALSO IN VSCODE
-
-
-
-
-
+// MAJOEGU WAS HERE ONCE AGAIN!!
