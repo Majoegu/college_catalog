@@ -5,25 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>University Catalog</title>
     <link rel="stylesheet" href="/home_style.css">
-
+    <link rel="stylesheet" href="/home_animation.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     
-
+    <nav class="side-nav">
+        <ul>
+          <li><a href="#reach">Reach</a></li>
+          <li><a href="#target">target</a></li>
+          <li><a href="#safety">Safety</a></li>
+        </ul>
+      </nav>
 </head>
 <body>
 
+<header>
+    <h1>Mackenzie's University Catalog</h1>
     <!-- Logout Button -->
     <div class="logout-container">
         <form id="logoutForm" action="/logout" method="POST">
             <button type="submit">Log Out</button>
         </form>
     </div>
+</header>
 
-
-
-      <h1>University Catalog</h1>
     
-      
-        <h2>Reach Schools</h2>
+
+<section class="intro-section">
+    
+<div class="card">
+    
+        <h2>Welcome to My University Catalog 🎓</h2>
+    <p>
+        Transferring to a university is a huge decision, and I wanted to make the process more engaging and informative.
+        This website serves two purposes:
+    </p>
+
+    <ul>
+        <li>🔹 <strong>A Personal Project for Growth</strong> – As I develop my web development skills, this site allows me to experiment with design, animations, and functionality while building something meaningful.</li>
+        <li>🔹 <strong>A Visual Guide for My University Choices</strong> – Instead of explaining my transfer plans in words, this catalog provides an interactive way to showcase the schools I’m considering.</li>
+    </ul>
+
+    <p>
+        Here, you’ll find information about each university, categorized by reach, target, and safety schools. 
+        Click on a school to learn more and see why each one is on my list. 
+    </p>
+
+   <a class="feedback" href="https://docs.google.com/document/d/1_zHLMcUH3sWAW2B4nAI0vPJ-5McOW9VlTOmcnPpK_8g/edit?usp=sharing" target="_blank">Leave Your Feedback Here</a>
+    
+</div>
+
+</section>
+
+<section class="reach-section" id="reach">
+        <h2>🔥 Reach Schools</h2>
         <div class="category-container">
             <% reachSchools.forEach(item => { %>
             <div class="item" onclick="openModal(
@@ -48,11 +82,68 @@
             </div>
         <% }) %>
     </div>
+    <div class="fire">
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+        <div class="fire-item"></div>
+
+    </div>
+    
+</section>
    
 
 
-    
-        <h2>Target Schools</h2>
+<section role="region" class="target-section" aria-labelledby="target" id="target">  
+        <h2>🎯 Target Schools</h2>
         <div class="category-container">
             <% targetSchools.forEach(item => { %>
                 <div class="item" onclick="openModal(
@@ -79,10 +170,12 @@
                     </div>
         <% }) %>
      </div>
-      
+    </section>      
 
-     
-        <h2>Safety Schools</h2>
+
+
+    <section class="safety-section" aria-labelledby="safety" id="safety">
+        <h2>🛡️ Safety Schools</h2>
         <div class="category-container">
             <% safetySchools.forEach(item => { %>
                 <div class="item" onclick="openModal(
@@ -108,7 +201,7 @@
                     </div>
         <% }) %>
     </div>
-    
+    </section>
 
     
       
@@ -271,6 +364,13 @@ function formatList(items) {
         }
 
     </script>
-
+<footer>
+    <address>
+ 
+      Seattle,<br />
+      Washington,<br />
+      USA
+    </address>
+  </footer>
 </body>
 </html>
