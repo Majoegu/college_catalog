@@ -329,7 +329,7 @@ p, li{
     margin: 10px auto; /* Center the image */
     max-width: 30%; /* Limit the size */
     border-radius: 15px;
-    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+    
     
 }
 
