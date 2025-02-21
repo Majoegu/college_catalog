@@ -115,10 +115,15 @@ app.post("/login", async (req, res) => {
 
 
 //MAIN PAGE
+
+
 app.get("/home", requireLogin, async (req, res) => {
     try {
-        const items = await Item.find(); // Fetch all items from the database
-        res.render("home", { items }); // Pass items to home.ejs
+        const reachSchools = await Item.find({ category: "Reach" });
+        const targetSchools = await Item.find({ category: "Target" });
+        const safetySchools = await Item.find({ category: "Safety" });
+
+        res.render("home", { reachSchools, targetSchools, safetySchools }); // ✅ Now passing grouped data
     } catch (error) {
         console.error("Error fetching items:", error);
         res.status(500).send("Internal Server Error");

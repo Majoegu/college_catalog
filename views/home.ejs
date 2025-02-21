@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>University Catalog</title>
     <link rel="stylesheet" href="/home_style.css">
+
+    
+
 </head>
 <body>
 
@@ -17,43 +20,100 @@
 
 
 
-
-
-
-
-
-
-
-    <h1>University Catalog</h1>
-
-    <div class="catalog">
-        <% items.forEach(item => { %>
+      <h1>University Catalog</h1>
+    
+      
+        <h2>Reach Schools</h2>
+        <div class="category-container">
+            <% reachSchools.forEach(item => { %>
             <div class="item" onclick="openModal(
-                '<%= item.name %>', 
+                '<%= item.name %>',
                 '<%= item.status %>', 
                 '<%= item.category %>', 
-                '<%= item.ranking %>',
-                '<%= item.whyThisUniversity %>',
-                '<%= item.programOfInterest %>',
+                '<%= item.ranking %>', 
+                '<%= item.whyThisUniversity %>', 
+                '<%= item.programOfInterest %>', 
                 '<%= item.financialEstimate.tuition %>', 
                 '<%= item.financialEstimate.estimatedTotalCost %>', 
                 '<%= item.financialEstimate.scholarships %>', 
                 '<%= item.campusEnvironment %>', 
                 '<%= item.careerImpact %>', 
                 '<%= JSON.stringify(item.pros || []) %>', 
-                '<%= JSON.stringify(item.cons || []) %>',
-                '<%= item.image %>', 
-                '<%= item.cImage %>',
-                '<%= JSON.stringify(item.sources || []) %>',
-            )">
-                <img src="<%= item.image %>" alt="<%= item.name %>">
-                
-
-                <h3><%= item.name %></h3>
+                '<%= JSON.stringify(item.cons || []) %>', 
+                '<%= item.image %>', '<%= item.cImage %>', 
+                '<%= JSON.stringify(item.sources || []) %>'
+                )">
+            <img src="<%= item.image %>" alt="<%= item.name %>">
+            <h3><%= item.name %></h3>
             </div>
-        <% }); %>
+        <% }) %>
+    </div>
+   
+
+
+    
+        <h2>Target Schools</h2>
+        <div class="category-container">
+            <% targetSchools.forEach(item => { %>
+                <div class="item" onclick="openModal(
+                    '<%= item.name %>', 
+                    '<%= item.status %>', 
+                    '<%= item.category %>', 
+                    '<%= item.ranking %>', 
+                    '<%= item.whyThisUniversity %>', 
+                    '<%= item.programOfInterest %>', 
+                    '<%= item.financialEstimate.tuition %>', 
+                    '<%= item.financialEstimate.estimatedTotalCost %>', 
+                    '<%= item.financialEstimate.scholarships %>', 
+                    '<%= item.campusEnvironment %>', 
+                    '<%= item.careerImpact %>', 
+                    '<%= JSON.stringify(item.pros || []) %>', 
+                    '<%= JSON.stringify(item.cons || []) %>', 
+                    '<%= item.image %>', 
+                    '<%= item.cImage %>', 
+                    '<%= JSON.stringify(item.sources || []) %>'
+                    )">
+
+                    <img src="<%= item.image %>" alt="<%= item.name %>">
+                    <h3><%= item.name %></h3>
+                    </div>
+        <% }) %>
+     </div>
+      
+
+     
+        <h2>Safety Schools</h2>
+        <div class="category-container">
+            <% safetySchools.forEach(item => { %>
+                <div class="item" onclick="openModal(
+                    '<%= item.name %>', 
+                    '<%= item.status %>',
+                    '<%= item.category %>', 
+                    '<%= item.ranking %>', 
+                    '<%= item.whyThisUniversity %>', 
+                    '<%= item.programOfInterest %>', 
+                    '<%= item.financialEstimate.tuition %>', 
+                    '<%= item.financialEstimate.estimatedTotalCost %>', 
+                    '<%= item.financialEstimate.scholarships %>', 
+                    '<%= item.campusEnvironment %>', 
+                    '<%= item.careerImpact %>', 
+                    '<%= JSON.stringify(item.pros || []) %>', 
+                    '<%= JSON.stringify(item.cons || []) %>', 
+                    '<%= item.image %>', 
+                    '<%= item.cImage %>', 
+                    '<%= JSON.stringify(item.sources || []) %>'
+                    )">
+                    <img src="<%= item.image %>" alt="<%= item.name %>">
+                    <h3><%= item.name %></h3>
+                    </div>
+        <% }) %>
     </div>
     
+
+    
+      
+
+
     
 
     <!-- Modal for item details -->
@@ -142,9 +202,13 @@
     </div>
 </div>
 
-    <script>
-   
 
+
+
+
+
+
+    <script>
 
 function formatList(items) {
     if (!Array.isArray(items) || items.length === 0) {

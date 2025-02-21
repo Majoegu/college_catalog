@@ -5,16 +5,10 @@ body {
     text-align: center;
 }
 
-.catalog {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-}
 
 .item {
-    width: 200px;
+    width: 200px; /* Ensures uniform width */
+    margin: 1px; /* ✅ Adds margin to create space */
     cursor: pointer;
     border-radius: 10px;
     overflow: hidden;
@@ -24,7 +18,7 @@ body {
 }
 
 .item img {
-    width: 94%;
+    width: 90%;
     height: auto;
     border-radius: 10px;
 }
@@ -38,8 +32,15 @@ body {
 }
 
 
-
-
+.category-container {
+    min-height: auto;
+    padding: 20px 0; /* Adds space inside the section */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* ✅ Adds spacing between items */
+    align-items: flex-start; /* ✅ Prevents stretching */
+}
 
 /* MODAL */
 
