@@ -193,12 +193,22 @@ body {
 
 
 
-.intro-section {
+.intro-section  {
     display: flex;
     justify-content: center;
     align-items: flex-start; /* Aligns the card to start at the top */
     min-height: 100vh;
     padding-top: 50px; /* Add padding for spacing */
+    height: auto;
+    padding-bottom:50px;
+}
+
+.Priority{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Aligns the card to start at the top */
+    min-height: 100vh;
+    padding-top: 80px; /* Add padding for spacing */
     height: auto;
     padding-bottom:50px;
 }
