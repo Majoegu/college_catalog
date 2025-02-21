@@ -252,14 +252,4 @@ app.put("/admin/items/:id", async (req, res) => {
 
 //=====================================================================================//
 
-
-
-
-//gahahadhahbahaababbabab
-
-// MAJOEGU WAS HERE ONCE AGAIN!!
-
-
-//branch 1 hello
-
-//gahhhhhhh
+//hehehe
