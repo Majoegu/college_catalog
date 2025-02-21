@@ -318,7 +318,7 @@ p, li{
 
 
 #modalImage {
-    max-width: 80px;
+    width: 30%;
     height: auto;
 }
 
@@ -330,7 +330,7 @@ p, li{
     max-width: 30%; /* Limit the size */
     border-radius: 15px;
     box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
-    border: 5px solid #444;
+    
 }
 
 
