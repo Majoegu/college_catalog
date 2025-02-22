@@ -127,7 +127,7 @@
             document.getElementById("editStatus").value = status;
             document.getElementById("editCategory").value = category;
             document.getElementById("editRanking").value = ranking;
-            document.getElementById("editWhy").value = whyThisUniversity;
+            document.getElementById("editWhy").value = Array.isArray(whyThisUniversity) ? whyThisUniversity.join(", ") : whyThisUniversity;
             document.getElementById("editProgram").value = programOfInterest; 
             document.getElementById("editTuition").value = tuition;
             document.getElementById("editTotalCost").value = estimatedTotalCost;
@@ -136,12 +136,7 @@
             document.getElementById("editCareer").value = careerImpact;
             document.getElementById("editPros").value = Array.isArray(pros) ? pros.join(", ") : pros;
             document.getElementById("editCons").value = Array.isArray(cons) ? cons.join(", ") : cons;
-
-
-            // document.getElementById("editPros").value = pros;
-            // document.getElementById("editCons").value = cons;
             document.getElementById("editSources").value = Array.isArray(sources) ? sources.join(", ") : sources;
-
             document.getElementById("editImage").value = image;
             document.getElementById("editCImage").value = cImage;
             document.getElementById("editModal").style.display = "flex";
@@ -162,7 +157,10 @@
         status: document.getElementById("editStatus").value,
         category: document.getElementById("editCategory").value,
         ranking: document.getElementById("editRanking").value,
-        whyThisUniversity: document.getElementById("editWhy").value,
+        whyThisUniversity: document.getElementById("editWhy").value
+            .split(",")
+            .map(item => item.trim())
+            .filter(item => item !== ""),
         programOfInterest: document.getElementById("editProgram").value,
         financialEstimate: {
             tuition: document.getElementById("editTuition").value,
@@ -171,9 +169,7 @@
         },
         campusEnvironment: document.getElementById("editCampus").value,
         careerImpact: document.getElementById("editCareer").value,
-        // pros: document.getElementById("editPros").value,
-        // cons: document.getElementById("editCons").value,
-
+      
         pros: document.getElementById("editPros").value
             .split(",")  // Convert string to array
             .map(item => item.trim()) // Trim whitespace from each entry
@@ -216,7 +212,10 @@
             const status = document.getElementById("status").value;
             const category = document.getElementById("category").value;
             const ranking = document.getElementById("ranking").value;
-            const whyThisUniversity = document.getElementById("whyThisUniversity").value;
+            const whyThisUniversity= document.getElementById("whyThisUniversity").value
+             .split(",")
+             .map(item => item.trim())
+             .filter(item => item !== "");
             const programOfInterest = document.getElementById("programOfInterest").value;
             const tuition = document.getElementById("tuition").value;
             const estimatedTotalCost = document.getElementById("estimatedTotalCost").value;
@@ -236,10 +235,6 @@
              .map(item => item.trim())
               .filter(item => item !== "");
 
-            // const pros = document.getElementById("pros").value;
-            // const cons = document.getElementById("cons").value;
-
-          
             const image = document.getElementById("image").value;
             
             const newItem = {

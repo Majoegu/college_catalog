@@ -5,7 +5,7 @@ const itemSchema = new mongoose.Schema({
     ranking: { type: String, required: true }, // Example: "#3 in CS, #2 in AI"
     status: { type: String, enum: ["applied", "will apply", "considering"], required: true }, // Your status
     category: { type: String, enum: ["Target", "Reach", "Safety"], required: true }, // Application category
-    whyThisUniversity: { type: String, required: true }, // Your reason for choosing it
+    whyThisUniversity: { type: [String], required: true }, // Your reason for choosing it
     programOfInterest: { type: String, required: true }, 
     financialEstimate: {
         tuition: { type: String, required: true }, // Example: "$62,000/year"
