@@ -11,59 +11,56 @@
 </head>
 <body>
     
+        <h1>Mackenzie's University Catalog</h1>
+       
+    <div class="menu_opener">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
     <div class="off-screen-menu">
         <ul>
-          <li><a href="#reach">Reach</a></li>
-          <li><a href="#target">Target</a></li>
-          <li><a href="#safety">Safety</a></li>
+            <li>
+                <form action="/admin/login" method="POST">
+                    <button class="adminButton">Admin Panel</button>
+                </form>
+            </li>
+            <li>
+                <form action="/logout" method="POST">
+                    <button class="logoutButton">log out</button>
+                </form>
+            </li>
+            
         </ul>
-      </div>
-  
-      <nav>
-        <h1>Mackenzie's University Catalog</h1>
-        <div class="ham-menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </nav>
-
-
-
-
-
-        <!-- <div class="logo">Mackenzie's University Catalog</div>
-
-      <nav id="hamburger-nav">
-        <div class="hamburger-menu">
-          <div class="hamburger-icon" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div class="menu-links">
-            <li><a href="#reach" onclick="toggleMenu()">Reach</a></li>
-            <li><a href="#target" onclick="toggleMenu()">Target</a></li>
-            <li><a href="#safety" onclick="toggleMenu()">safety</a></li>
-            <li><a href="#Priority" onclick="toggleMenu()">Priority List</a></li>
-          </div>
-        </div>
-      </nav> -->
-<!--<header>
-
+        
+        <ul >
+            <li ><a class="hamList" href="#reach">Reach</a></li>
+            <li ><a class="hamList" href="#target">Target</a></li>
+            <li ><a class="hamList" href="#safety">Safety</a></li>
+            <li ><a class="hamList" href="#Priority">Priority List</a></li>
+        </ul>
+    </div>
     
-      <div class="header-buttons">
-        <button id="adminPanel" action="/admin" method="GET">
-            Admin Panel
-        </button>
-     
-    
-        <form id="logoutForm" action="/logout" method="POST">
-            <button type="submit">Log Out</button>
-        </form>
-    </div> 
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const menuOpener = document.querySelector(".menu_opener");
+    const offScreenMenu = document.querySelector(".off-screen-menu");
 
-</header>-->
+    if (menuOpener && offScreenMenu) {
+        // Toggle menu when clicking the opener
+        menuOpener.addEventListener("click", () => {
+            console.log("Menu toggled");
+            offScreenMenu.classList.toggle("active");
+        });
+    } else {
+        console.error("Menu opener or off-screen menu not found!");
+    }
+});
+
+
+</script>
+
 
     
 
@@ -344,80 +341,7 @@
 
 
 
-    <script>
-        
-  const hamMenu = document.querySelector(".ham-menu");
-  const offScreenMenu = document.querySelector(".off-screen-menu");
-
-    hamMenu.addEventListener("click",()=>{
-    hamMenu.classList.toggle("active");
-    offScreenMenu.classList.toggle("active");
-  });
-
-
-
-function formatList(items) {
-    if (!Array.isArray(items) || items.length === 0) {
-        return "<p>None</p>";
-    }
-    return "<ul>" + items.map(item => `<li>${item}</li>`).join('') + "</ul>";
-}
-
-
-        function openModal(title, status, category, ranking, whyThisUniversity, programOfInterest, tuition, totalCost, scholarships, campus, career, pros, cons, image, cImage, sources) {
-            
-            // Ensure pros and cons are arrays
-            if (typeof pros === "string") pros = JSON.parse(pros);
-            if (typeof cons === "string") cons = JSON.parse(cons);
-            if (typeof sources === "string") sources = JSON.parse(sources);
-           
-           
-            console.log("Campus Image URL:", cImage);
-            document.getElementById("modalTitle").innerText = title;
-            document.getElementById("campusImage").src = cImage;
-            document.getElementById("modalImage").src = image;
-            document.getElementById("modalStatus").innerText = status;
-            document.getElementById("modalCategory").innerText = category;
-            document.getElementById("modalRanking").innerText = ranking;
-            document.getElementById("modalWhy").innerHTML = formatList(whyThisUniversity);
-            document.getElementById("modalPrograms").innerText = programOfInterest;
-            document.getElementById("modalTuition").innerText = tuition;
-            document.getElementById("modalTotalCost").innerText = totalCost;
-            document.getElementById("modalScholarships").innerText = scholarships;
-            document.getElementById("modalCampus").innerText = campus;
-            document.getElementById("modalCareer").innerText = career;
-
-             // Convert string arrays back to lists
-             document.getElementById("modalPros").innerHTML = formatList(pros);
-             document.getElementById("modalCons").innerHTML = formatList(cons);
-             document.getElementById("modalSources").innerHTML = formatList(sources);
-
-          
-            document.getElementById("itemModal").style.display = "flex";
-        
-            // Disable scrolling on the background
-            document.body.style.overflow = "hidden";
-            
-              // Handle missing campus image with default
-    if (cImage) {
-        document.getElementById("campusImage").src = cImage;
-    } else {
-        document.getElementById("campusImage").src = "/images/default-campus.jpeg"; // Fallback
-    }
-
-    console.log("Sources received in modal:", sources);
-}
-        
-
-        function closeModal() {
-            document.getElementById("itemModal").style.display = "none";
-
-            // Re-enable scrolling on the background
-            document.body.style.overflow = "auto";
-        }
-
-    </script>
-
+  
 <section class="Priority" id="Priority" aria-labelledby="Priority">
     
     <div class="card">
