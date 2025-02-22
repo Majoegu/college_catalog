@@ -156,32 +156,6 @@ li:hover{
     border-radius: 10px;
 }
 
-.header-buttons {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    gap: 10px; /* Space between buttons */
-}
-
-.header-buttons button {
-    background-color: #ff5733; /* Vibrant color to match your theme */
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.5s ease;
-}
-
-.header-buttons button:hover {
-    background-color: #c70039;
-    transform: scale(1.05);
-}
-
-
-
 .category-container {
     
     padding: 20px 0; /* Adds space inside the section */
@@ -280,8 +254,8 @@ li:hover{
     justify-content: center;
     align-items: center; /* Aligns the card to start at the top */
     min-height: 100vh;
-    padding-top: 3vh; /* Add padding for spacing */
-    padding-bottom:50px;
+    padding-top: 1vh; /* Add padding for spacing */
+    padding-bottom: 50px;
     
     
 }
