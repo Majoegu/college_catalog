@@ -38,6 +38,7 @@
         <input type="text" id="sources" placeholder="Sources (comma separated URLs)">
         <input type="text" id="image" placeholder="Image URL (optional)">
         <input type="text" id="cImage" placeholder="Campus Image URL">
+        <input type="text" id="appCost" placeholder="app cost">
         <button onclick="addItem()">Add Item</button>
 
        
@@ -77,6 +78,7 @@
             <input type="text" id="editSources" placeholder="Sources (comma separated URLs)">
             <input type="text" id="editImage" placeholder="Logo Image URL">
             <input type="text" id="editCImage" placeholder="Campus Image URL">
+            <input type="text" id="editAppCost" placeholder="app cost">
             <button onclick="saveEdit()">Save Changes</button>
         </div>
     </div>
@@ -112,7 +114,8 @@
                 '${item.cons}', 
                 '${item.sources}', 
                 '${item.image}', 
-                '${item.cImage}'
+                '${item.cImage}',
+                '${item.appCost}'
             )">Edit</button>
             <button class="delete-btn" onclick="deleteItem('${item._id}')">Delete</button>
             </div>
@@ -139,6 +142,7 @@
             document.getElementById("editSources").value = Array.isArray(sources) ? sources.join(", ") : sources;
             document.getElementById("editImage").value = image;
             document.getElementById("editCImage").value = cImage;
+            document.getElementById("editAppCost").value = appCost;
             document.getElementById("editModal").style.display = "flex";
         }
 
@@ -185,7 +189,8 @@
             .filter(item => item !== ""),
 
         image: document.getElementById("editImage").value,
-        cImage: document.getElementById("editCImage").value
+        cImage: document.getElementById("editCImage").value,
+        appCost: document.getElementById("editAppCost").value
     };
 
     try {
@@ -236,6 +241,8 @@
               .filter(item => item !== "");
 
             const image = document.getElementById("image").value;
+            const appCost = document.getElementById("appCost").value;
+            
             
             const newItem = {
                 name,
@@ -255,7 +262,8 @@
                 cons,
                 sources,
                 image,
-                cImage
+                cImage,
+                appCost
     };
 
 

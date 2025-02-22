@@ -19,7 +19,7 @@ const itemSchema = new mongoose.Schema({
     sources: { type: [String], required: true }, // Links to sources
     cImage: { type: String, required: false }, // University logo/image path
     image: { type: String, required: false }, // University logo/image path
-    
+    appCost: { type: Number, required: false }, // University logo/image path
 });
 
 const Item = mongoose.model("Item", itemSchema);

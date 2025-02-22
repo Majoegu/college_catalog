@@ -320,7 +320,7 @@ a.location{
 }
 
 
-.Priority{
+.moreInfo{
     display: flex;
     justify-content: center;
     align-items: flex-start; /* Aligns the card to start at the top */

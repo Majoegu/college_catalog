@@ -1,3 +1,4 @@
+const Item = require("../models/item");
 
 
 
@@ -60,3 +61,11 @@ function formatList(items) {
             // Re-enable scrolling on the background
             document.body.style.overflow = "auto";
         }
+
+
+
+
+        // Extracting the list of universities with their application costs
+// const uniList = items.map(uni => `${item.name}: $${item.appCost}`);
+
+// console.log(uniList);
