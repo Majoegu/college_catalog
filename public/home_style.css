@@ -131,7 +131,7 @@ li{
 }
 
 li:hover{
-    transform: scale(1.2);
+    transform: scale(1.1);
 
 }
 
@@ -215,19 +215,18 @@ li:hover{
 .safety-section .item {
     display: inline-block; /* Prevents layout shifts */
     animation: float 2s ease-in-out infinite; /* Floating effect */
-    transition: transform 1s ease-in-out; /* Smooth zoom effect on hover */
+    
 }
 
 .target-section .item {
     display: inline-block; /* Prevents layout shifts */
     animation: float 2s ease-in-out infinite; /* Floating effect */
-    transition: transform 1s ease-in-out; /* Smooth zoom effect on hover */
 }
 
 .reach-section .item {
     display: inline-block; /* Prevents layout shifts */
     animation: float 2s ease-in-out infinite; /* Floating effect */
-    transition: transform 1s ease-in-out; /* Smooth zoom effect on hover */
+
 }
 
 
@@ -235,14 +234,18 @@ li:hover{
 .safety-section .item:hover {
     animation:none ; 
     transform: scale(1.05); /* Zooms in on hover */
+    
+   
 }
 .target-section .item:hover {
     animation:none ; 
     transform: scale(1.05); /* Zooms in on hover */
+
 }
 .reach-section .item:hover {
     animation:none ; 
     transform: scale(1.05); /* Zooms in on hover */
+   
 }
 
 
@@ -317,6 +320,13 @@ a.location{
     text-align: center;
     font-weight:bold;
     color:#b8b8b8;
+    transition: transform 1s ease-in-out;
+}
+
+a.location:hover{
+    
+    transform: scale(1.2);
+    
 }
 
 
@@ -492,6 +502,12 @@ margin-top: 10px;
     font-size: 16px;
     text-transform: uppercase;
     color: #c1ba9e;
+}
+
+.source-link {
+    color: #ffffff; /* Change to your desired color */
+    text-decoration: none; /* Remove underline if you want */
+    font-weight: bold;
 }
 
 

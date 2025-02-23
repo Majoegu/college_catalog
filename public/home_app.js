@@ -6,9 +6,14 @@ function formatList(items) {
     if (!Array.isArray(items) || items.length === 0) {
         return "<p>None</p>";
     }
-    return "<ul>" + items.map(item => `<li>${item}</li>`).join('') + "</ul>";
+    return "<ul>" + items.map(item => {
+        // Check if the item is a URL (basic check)
+        if (item.startsWith("http")) {
+            return `<li><a class="source-link" href="${item}" target="_blank" rel="noopener noreferrer">${item}</a></li>`;
+        }
+        return `<li>${item}</li>`;
+    }).join('') + "</ul>";
 }
-
 
         function openModal(title, status, category, ranking, whyThisUniversity, programOfInterest, tuition, totalCost, scholarships, campus, career, pros, cons, image, cImage, sources,) {
             
