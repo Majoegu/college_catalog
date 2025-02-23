@@ -10,7 +10,7 @@ function formatList(items) {
 }
 
 
-        function openModal(title, status, category, ranking, whyThisUniversity, programOfInterest, tuition, totalCost, scholarships, campus, career, pros, cons, image, cImage, sources) {
+        function openModal(title, status, category, ranking, whyThisUniversity, programOfInterest, tuition, totalCost, scholarships, campus, career, pros, cons, image, cImage, sources, whyThisUniversity) {
             
             // Ensure pros and cons are arrays
             if (typeof pros === "string") pros = JSON.parse(pros);
