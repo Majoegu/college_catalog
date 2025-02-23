@@ -130,16 +130,16 @@
             document.getElementById("editStatus").value = status;
             document.getElementById("editCategory").value = category;
             document.getElementById("editRanking").value = ranking;
-            document.getElementById("editWhy").value = Array.isArray(whyThisUniversity) ? whyThisUniversity.join(", ") : whyThisUniversity;
+            document.getElementById("editWhy").value = Array.isArray(whyThisUniversity) ? whyThisUniversity.join("|") : whyThisUniversity;
             document.getElementById("editProgram").value = programOfInterest; 
             document.getElementById("editTuition").value = tuition;
             document.getElementById("editTotalCost").value = estimatedTotalCost;
             document.getElementById("editScholarships").value = scholarships;
-            document.getElementById("editDates").value = Array.isArray(pros) ? pros.join(", ") : dates;
-            document.getElementById("editCareer").value = Array.isArray(pros) ? pros.join(", ") : careerImpact;
-            document.getElementById("editPros").value = Array.isArray(pros) ? pros.join(", ") : pros;
-            document.getElementById("editCons").value = Array.isArray(cons) ? cons.join(", ") : cons;
-            document.getElementById("editSources").value = Array.isArray(sources) ? sources.join(", ") : sources;
+            document.getElementById("editDates").value = Array.isArray(dates) ? pros.join("|") : dates;
+            document.getElementById("editCareer").value = Array.isArray(careerImpact) ? pros.join("|") : careerImpact;
+            document.getElementById("editPros").value = Array.isArray(pros) ? pros.join("|") : pros;
+            document.getElementById("editCons").value = Array.isArray(cons) ? cons.join("|") : cons;
+            document.getElementById("editSources").value = Array.isArray(sources) ? sources.join("|") : sources;
             document.getElementById("editImage").value = image;
             document.getElementById("editCImage").value = cImage;
             document.getElementById("editModal").style.display = "flex";
@@ -161,7 +161,7 @@
         category: document.getElementById("editCategory").value,
         ranking: document.getElementById("editRanking").value,
         whyThisUniversity: document.getElementById("editWhy").value
-            .split(",")
+            .split("|")
             .map(item => item.trim())
             .filter(item => item !== ""),
         programOfInterest: document.getElementById("editProgram").value,
@@ -172,27 +172,27 @@
         },
   
         dates: document.getElementById("editDates").value
-            .split(",")
+            .split("|")
             .map(item => item.trim())
             .filter(item => item !== ""),
 
         careerImpact: document.getElementById("editCareer").value
-            .split(",")
+            .split("|")
             .map(item => item.trim())
             .filter(item => item !== ""),
 
       
         pros: document.getElementById("editPros").value
-            .split(",")  // Convert string to array
+            .split("|")  // Convert string to array
             .map(item => item.trim()) // Trim whitespace from each entry
             .filter(item => item !== ""), // Remove empty values
         cons: document.getElementById("editCons").value
-            .split(",")
+            .split("|")
             .map(item => item.trim())
             .filter(item => item !== ""),
 
         sources: document.getElementById("editSources").value
-            .split(",")
+            .split("|")
             .map(item => item.trim())
             .filter(item => item !== ""),
 
@@ -226,7 +226,7 @@
             const category = document.getElementById("category").value;
             const ranking = document.getElementById("ranking").value;
             const whyThisUniversity= document.getElementById("whyThisUniversity").value
-             .split(",")
+             .split("|")
              .map(item => item.trim())
              .filter(item => item !== "");
             const programOfInterest = document.getElementById("programOfInterest").value;
@@ -235,29 +235,29 @@
             const scholarships = document.getElementById("scholarships").value;
      
             const dates = document.getElementById("dates").value
-             .split(",")
+             .split("|")
              .map(item => item.trim())
              .filter(item => item !== "");
          
          
             const careerImpact = document.getElementById("careerImpact").value
-             .split(",")
+             .split("|")
              .map(item => item.trim())
              .filter(item => item !== "");
       
 
             const pros = document.getElementById("pros").value
-             .split(",")
+             .split("|")
              .map(item => item.trim())
              .filter(item => item !== "");
 
              const cons = document.getElementById("cons").value
-             .split(",")
+             .split("|")
              .map(item => item.trim())
               .filter(item => item !== "");
 
               const sources = document.getElementById("sources").value
-             .split(",")
+             .split("|")
              .map(item => item.trim())
               .filter(item => item !== "");
 
