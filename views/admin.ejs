@@ -31,7 +31,7 @@
         <input type="text" id="tuition" placeholder="Tuition (e.g., $62,000/year)">
         <input type="text" id="estimatedTotalCost" placeholder="Total Cost (e.g., ~$80,000/year)">
         <input type="text" id="scholarships" placeholder="Scholarships (if any)">
-        <textarea id="campusEnvironment" placeholder="Campus Environment"></textarea>
+        <textarea id="dates" placeholder="Dates and deadlines"></textarea>
         <textarea id="careerImpact" placeholder="Career/Alumni Impact"></textarea>
         <textarea id="pros" placeholder="Pros"></textarea>
         <textarea id="cons" placeholder="Cons"></textarea>
@@ -70,7 +70,7 @@
             <input type="text" id="editTuition" placeholder="Tuition">
             <input type="text" id="editTotalCost" placeholder="Total Cost">
             <input type="text" id="editScholarships" placeholder="Scholarships">
-            <textarea id="editCampus" placeholder="Campus Environment"></textarea>
+            <textarea id="editDates" placeholder="Dates and Deadlines"></textarea>
             <textarea id="editCareer" placeholder="Career Impact"></textarea>
             <textarea id="editPros" placeholder="Pros"></textarea>
             <textarea id="editCons" placeholder="Cons"></textarea>
@@ -107,7 +107,7 @@
                 '${item.financialEstimate.tuition}', 
                 '${item.financialEstimate.estimatedTotalCost}', 
                 '${item.financialEstimate.scholarships}', 
-                '${item.campusEnvironment}', 
+                '${item.dates}', 
                 '${item.careerImpact}', 
                 '${item.pros}', 
                 '${item.cons}', 
@@ -124,7 +124,7 @@
             });
         }
 
-        function openEditModal(id,name, status, category, ranking, whyThisUniversity, programOfInterest, tuition, estimatedTotalCost, scholarships, campusEnvironment, careerImpact, pros, cons, sources, image, cImage,appCost ) {
+        function openEditModal(id,name, status, category, ranking, whyThisUniversity, programOfInterest, tuition, estimatedTotalCost, scholarships, dates, careerImpact, pros, cons, sources, image, cImage,appCost ) {
             document.getElementById("editItemId").value = id;
             document.getElementById("editName").value = name;
             document.getElementById("editStatus").value = status;
@@ -135,8 +135,8 @@
             document.getElementById("editTuition").value = tuition;
             document.getElementById("editTotalCost").value = estimatedTotalCost;
             document.getElementById("editScholarships").value = scholarships;
-            document.getElementById("editCampus").value = campusEnvironment;
-            document.getElementById("editCareer").value = careerImpact;
+            document.getElementById("editDates").value = Array.isArray(pros) ? pros.join(", ") : dates;
+            document.getElementById("editCareer").value = Array.isArray(pros) ? pros.join(", ") : careerImpact;
             document.getElementById("editPros").value = Array.isArray(pros) ? pros.join(", ") : pros;
             document.getElementById("editCons").value = Array.isArray(cons) ? cons.join(", ") : cons;
             document.getElementById("editSources").value = Array.isArray(sources) ? sources.join(", ") : sources;
@@ -170,8 +170,17 @@
             estimatedTotalCost: document.getElementById("editTotalCost").value,
             scholarships: document.getElementById("editScholarships").value
         },
-        campusEnvironment: document.getElementById("editCampus").value,
-        careerImpact: document.getElementById("editCareer").value,
+  
+        dates: document.getElementById("editDates").value
+            .split(",")
+            .map(item => item.trim())
+            .filter(item => item !== ""),
+
+        careerImpact: document.getElementById("editCareer").value
+            .split(",")
+            .map(item => item.trim())
+            .filter(item => item !== ""),
+
       
         pros: document.getElementById("editPros").value
             .split(",")  // Convert string to array
@@ -224,16 +233,29 @@
             const tuition = document.getElementById("tuition").value;
             const estimatedTotalCost = document.getElementById("estimatedTotalCost").value;
             const scholarships = document.getElementById("scholarships").value;
-            const campusEnvironment = document.getElementById("campusEnvironment").value;
-            const careerImpact = document.getElementById("careerImpact").value;
+     
+            const dates = document.getElementById("dates").value
+             .split(",")
+             .map(item => item.trim())
+             .filter(item => item !== "");
+         
+         
+            const careerImpact = document.getElementById("careerImpact").value
+             .split(",")
+             .map(item => item.trim())
+             .filter(item => item !== "");
+      
+
             const pros = document.getElementById("pros").value
              .split(",")
              .map(item => item.trim())
              .filter(item => item !== "");
+
              const cons = document.getElementById("cons").value
              .split(",")
              .map(item => item.trim())
               .filter(item => item !== "");
+
               const sources = document.getElementById("sources").value
              .split(",")
              .map(item => item.trim())
@@ -255,7 +277,7 @@
                     estimatedTotalCost,
                     scholarships
                 },
-                campusEnvironment,
+                dates,
                 careerImpact,
                 pros,
                 cons,

@@ -351,7 +351,7 @@ p, li{
     font-family: 'Inter', sans-serif;
     font-size: 15px;
     line-height: 1.4;
-    color:#b8b8b8;
+    color:#ffffff;
 }
 
 
@@ -501,13 +501,14 @@ margin-top: 10px;
     display: block;
     font-size: 16px;
     text-transform: uppercase;
-    color: #c1ba9e;
+    color: #e0dfdf;
 }
 
 .source-link {
     color: #ffffff; /* Change to your desired color */
     text-decoration: none; /* Remove underline if you want */
     font-weight: bold;
+    z-index:888;
 }
 
 

@@ -110,8 +110,8 @@
                 '<%= item.financialEstimate.tuition %>', 
                 '<%= item.financialEstimate.estimatedTotalCost %>', 
                 '<%= item.financialEstimate.scholarships %>', 
-                '<%= item.campusEnvironment %>', 
-                '<%= item.careerImpact %>', 
+                '<%= JSON.stringify(item.dates || []) %>', 
+                '<%= JSON.stringify(item.careerImpact || []) %>', 
                 '<%= JSON.stringify(item.pros || []) %>', 
                 '<%= JSON.stringify(item.cons || []) %>', 
                 '<%= item.image %>', '<%= item.cImage %>', 
@@ -187,7 +187,7 @@
         <div class="category-container">
             <% targetSchools.forEach(item => { %>
                 <div class="item" onclick="openModal(
-                    '<%= item.name %>', 
+                    '<%= item.name %>',
                     '<%= item.status %>', 
                     '<%= item.category %>', 
                     '<%= item.ranking %>', 
@@ -196,12 +196,11 @@
                     '<%= item.financialEstimate.tuition %>', 
                     '<%= item.financialEstimate.estimatedTotalCost %>', 
                     '<%= item.financialEstimate.scholarships %>', 
-                    '<%= item.campusEnvironment %>', 
-                    '<%= item.careerImpact %>', 
+                    '<%= JSON.stringify(item.dates || []) %>', 
+                    '<%= JSON.stringify(item.careerImpact || []) %>', 
                     '<%= JSON.stringify(item.pros || []) %>', 
                     '<%= JSON.stringify(item.cons || []) %>', 
-                    '<%= item.image %>', 
-                    '<%= item.cImage %>', 
+                    '<%= item.image %>', '<%= item.cImage %>', 
                     '<%= JSON.stringify(item.sources || []) %>'
                     )">
 
@@ -219,23 +218,25 @@
         <div class="category-container">
             <% safetySchools.forEach(item => { %>
                 <div class="item" onclick="openModal(
-                    '<%= item.name %>', 
-                    '<%= item.status %>',
+                    '<%= item.name %>',
+                    '<%= item.status %>', 
                     '<%= item.category %>', 
                     '<%= item.ranking %>', 
-                    '<%= JSON.stringify(item.whyThisUniversity || []) %>',
+                    '<%= JSON.stringify(item.whyThisUniversity || []) %>', 
                     '<%= item.programOfInterest %>', 
                     '<%= item.financialEstimate.tuition %>', 
                     '<%= item.financialEstimate.estimatedTotalCost %>', 
                     '<%= item.financialEstimate.scholarships %>', 
-                    '<%= item.campusEnvironment %>', 
-                    '<%= item.careerImpact %>', 
-                    '<%= JSON.stringify(item.pros || []) %>', 
-                    '<%= JSON.stringify(item.cons || []) %>', 
+                    '<%= JSON.stringify(item.dates || []) %>', 
+                    '<%= JSON.stringify(item.careerImpact || []) %>', 
+                    '<%= JSON.stringify(item.pros || []) %>',   
+                    '<%= JSON.stringify(item.cons || []) %>',   
                     '<%= item.image %>', 
                     '<%= item.cImage %>', 
                     '<%= JSON.stringify(item.sources || []) %>'
-                    )">
+    )">
+
+
                     <img src="<%= item.image %>" alt="<%= item.name %>">
                     <h3><%= item.name %></h3>
                     </div>
@@ -292,7 +293,7 @@
             </div>
             
 
-            <!-- Second Row: Financial Details, Campus, Career -->
+    
              <div class="modal-flex">
 
                 <div class="modal-box">
@@ -306,13 +307,13 @@
 
 
                 <div class="modal-box">
-                    <p><strong>Campus Environment:</strong></p>
-                    <p id="modalCampus"></p>
+                    <p><strong>Dates and Deadlines:</strong></p>
+                    <ul id="modalDates"></ul>
                 </div>
 
                 <div class="modal-box">
                     <p><strong>Career/Alumni Impact:</strong></p>
-                    <p id="modalCareer"></p>
+                    <ul id="modalCareer"></ul>
 
                 </div>
              </div>

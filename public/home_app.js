@@ -15,13 +15,16 @@ function formatList(items) {
     }).join('') + "</ul>";
 }
 
-        function openModal(title, status, category, ranking, whyThisUniversity, programOfInterest, tuition, totalCost, scholarships, campus, career, pros, cons, image, cImage, sources,) {
-            
+        function openModal(title, status, category, ranking, whyThisUniversity, programOfInterest, tuition, totalCost, scholarships, dates, career, pros, cons, image, cImage, sources,) {
+            console.log("🚀 Dates received:", dates);
+            console.log("🚀 Career received:", career);
             // Ensure pros and cons are arrays
             if (typeof pros === "string") pros = JSON.parse(pros);
             if (typeof cons === "string") cons = JSON.parse(cons);
             if (typeof sources === "string") sources = JSON.parse(sources);
             if (typeof whyThisUniversity === "string") whyThisUniversity = JSON.parse(whyThisUniversity);
+            if (typeof dates === "string") dates = JSON.parse(dates);
+            if (typeof career === "string") career = JSON.parse(career);
            
            
             console.log("Campus Image URL:", cImage);
@@ -36,8 +39,8 @@ function formatList(items) {
             document.getElementById("modalTuition").innerText = tuition;
             document.getElementById("modalTotalCost").innerText = totalCost;
             document.getElementById("modalScholarships").innerText = scholarships;
-            document.getElementById("modalCampus").innerText = campus;
-            document.getElementById("modalCareer").innerText = career;
+            document.getElementById("modalDates").innerHTML = formatList(dates);
+            document.getElementById("modalCareer").innerHTML = formatList(career);
 
              // Convert string arrays back to lists
              document.getElementById("modalPros").innerHTML = formatList(pros);

@@ -12,8 +12,8 @@ const itemSchema = new mongoose.Schema({
         estimatedTotalCost: { type: String, required: true }, // Example: "~$80,000/year"
         scholarships: { type: String, required: false }, // Scholarship possibilities
     },
-    campusEnvironment: { type: String, required: true }, // Campus culture, collaboration, etc.
-    careerImpact: { type: String, required: true }, // Alumni network, industry connections
+    dates: { type: [String], required: true }, 
+    careerImpact: { type: [String], required: true }, // Alumni network, industry connections
     pros: { type: [String], required: true }, // Pros as an array
     cons: { type: [String], required: true }, // Cons as an array
     sources: { type: [String], required: true }, // Links to sources

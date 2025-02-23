@@ -188,7 +188,7 @@ app.post("/admin/items", async (req, res) => {
         console.log("Received Data:", req.body); // ✅ Debugging log
 
         const { name, status, category, ranking, whyThisUniversity, 
-            programOfInterest, financialEstimate, campusEnvironment, careerImpact, 
+            programOfInterest, financialEstimate, dates, careerImpact, 
             pros, cons, sources, image, cImage, appCost } = req.body;
 
         const newItem = new Item({
@@ -199,7 +199,7 @@ app.post("/admin/items", async (req, res) => {
             whyThisUniversity,
             programOfInterest,
             financialEstimate,
-            campusEnvironment,
+            dates,
             careerImpact,
             pros,
             cons,
@@ -236,9 +236,9 @@ app.delete("/admin/items/:id", requireAdmin, async (req, res) => {
 //edit an item
 app.put("/admin/items/:id", async (req, res) => {
     try {
-        const { name, ranking, status, category, whyThisUniversity, programOfInterest, financialEstimate, campusEnvironment,
+        const { name, ranking, status, category, whyThisUniversity, programOfInterest, financialEstimate, dates,
             careerImpact, pros, cons, sources, cImage, image, appCost} = req.body;
-        const updatedItem = await Item.findByIdAndUpdate(req.params.id, { name, ranking, status, category, whyThisUniversity, programOfInterest, financialEstimate, campusEnvironment,
+        const updatedItem = await Item.findByIdAndUpdate(req.params.id, { name, ranking, status, category, whyThisUniversity, programOfInterest, financialEstimate, dates,
             careerImpact, pros, cons, sources, cImage, image, appCost }, { new: true });
 
         if (!updatedItem) {
