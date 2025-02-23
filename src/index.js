@@ -139,8 +139,16 @@ app.post("/logout",(req,res)=>{
 })
 
 
-
-
+app.get("/items", async (req, res) => {
+    try {
+        const universities = await University.find({}, "name appCost");
+        console.log("Sending universities:", universities); // Debugging log
+        res.json(universities); // ✅ Return array directly
+    } catch (error) {
+        console.error("Error fetching universities:", error);
+        res.status(500).json({ error: "Failed to fetch data" });
+    }
+});
 
 
 // ===============================ADMIN PANEL =====================================//
@@ -191,7 +199,7 @@ app.post("/admin/items", async (req, res) => {
 
         const { name, status, category, ranking, whyThisUniversity, 
             programOfInterest, financialEstimate, campusEnvironment, careerImpact, 
-            pros, cons, sources, image, cImage } = req.body;
+            pros, cons, sources, image, cImage, appCost } = req.body;
 
         const newItem = new Item({
             name,
@@ -207,7 +215,8 @@ app.post("/admin/items", async (req, res) => {
             cons,
             sources,
             image,
-            cImage
+            cImage,
+            appCost
         });
 
         await newItem.save();
@@ -222,10 +231,10 @@ app.post("/admin/items", async (req, res) => {
 
 
 // Get all items
-app.get("/items", async (req, res) => {
-    const items = await Item.find();
-    res.json(items);
-});
+// app.get("/items", async (req, res) => {
+//     const items = await Item.find();
+//     res.json(items);
+// });
 
 // Delete an item
 app.delete("/admin/items/:id", requireAdmin, async (req, res) => {
@@ -238,9 +247,9 @@ app.delete("/admin/items/:id", requireAdmin, async (req, res) => {
 app.put("/admin/items/:id", async (req, res) => {
     try {
         const { name, ranking, status, category, whyThisUniversity, programOfInterest, financialEstimate, campusEnvironment,
-            careerImpact, pros, cons, sources, cImage, image} = req.body;
+            careerImpact, pros, cons, sources, cImage, image, appCost} = req.body;
         const updatedItem = await Item.findByIdAndUpdate(req.params.id, { name, ranking, status, category, whyThisUniversity, programOfInterest, financialEstimate, campusEnvironment,
-            careerImpact, pros, cons, sources, cImage, image }, { new: true });
+            careerImpact, pros, cons, sources, cImage, image, appCost }, { new: true });
 
         if (!updatedItem) {
             return res.status(404).json({ message: "Item not found" });

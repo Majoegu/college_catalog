@@ -345,7 +345,17 @@ p, li{
 }
 
 
+.cost-text{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto;
+    padding:20px;
+    width: 80%;
+    background-color:#000000;
+    gap:20px;
 
+}
 
 
 /* MODAL */
@@ -388,16 +398,18 @@ p, li{
 
 /* Close Button */
 .close {
-    position: absolute;
+    position: fixed;
     top: 10px;
-    right: 15px;
+    right: 5vh;
     cursor: pointer;
-    font-size: 30px;
+    font-size: 40px;
     font-weight: bold;
     transition: 0.3s;
     padding: 5px;
     color: white;
     border-radius: 5px;
+    z-index:999;
+    animation: slideDown 0.4s forwards;
 }
 
 .close:hover {

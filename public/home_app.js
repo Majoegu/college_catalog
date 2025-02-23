@@ -16,6 +16,7 @@ function formatList(items) {
             if (typeof pros === "string") pros = JSON.parse(pros);
             if (typeof cons === "string") cons = JSON.parse(cons);
             if (typeof sources === "string") sources = JSON.parse(sources);
+            if (typeof whyThisUniversity === "string") whyThisUniversity = JSON.parse(whyThisUniversity);
            
            
             console.log("Campus Image URL:", cImage);
@@ -62,10 +63,4 @@ function formatList(items) {
             document.body.style.overflow = "auto";
         }
 
-
-
-
-        // Extracting the list of universities with their application costs
-// const uniList = items.map(uni => `${item.name}: $${item.appCost}`);
-
-// console.log(uniList);
+ 

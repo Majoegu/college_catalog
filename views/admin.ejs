@@ -44,7 +44,6 @@
        
     </div>
     <div id="itemList"> 
-        <h2>Item List</h2>
         <ul id="itemList" class="item-list"></ul>
     </div>
 
@@ -116,6 +115,7 @@
                 '${item.image}', 
                 '${item.cImage}',
                 '${item.appCost}'
+            
             )">Edit</button>
             <button class="delete-btn" onclick="deleteItem('${item._id}')">Delete</button>
             </div>
@@ -124,7 +124,7 @@
             });
         }
 
-        function openEditModal(id,name, status, category, ranking, whyThisUniversity, programOfInterest, tuition, estimatedTotalCost, scholarships, campusEnvironment, careerImpact, pros, cons, sources, image, cImage ) {
+        function openEditModal(id,name, status, category, ranking, whyThisUniversity, programOfInterest, tuition, estimatedTotalCost, scholarships, campusEnvironment, careerImpact, pros, cons, sources, image, cImage,appCost ) {
             document.getElementById("editItemId").value = id;
             document.getElementById("editName").value = name;
             document.getElementById("editStatus").value = status;

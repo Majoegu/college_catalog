@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/home_style.css">
     <link rel="stylesheet" href="/home_animation.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    <script src="/home_app.js"></script>
+    
 </head>
 <body>
     
@@ -251,8 +251,9 @@
 
     <!-- Modal for item details -->
     <div id="itemModal" class="modal">
+        <span class="close" onclick="closeModal()">X</span>
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">X</span>
+            
 
 
             <!-- University Header -->
@@ -283,11 +284,22 @@
             
             
             <!-- Full-Width Block for "Why This University?" -->
-            <div class="modal-full">
+            <!-- <div class="modal-full">
                 <p><strong>Why This University?</strong> </p>
-                <p id="modalWhy"></p>
+                <ul id="modalWhy"></ul>
+            </div> -->
+            <div class="modal-full">
+                
+                    <p><strong>Why This University?</strong></p>
+                    <ul id="modalWhy"></ul>
+                
+                
             </div>
             
+
+
+
+
             <!-- Second Row: Financial Details, Campus, Career -->
              <div class="modal-flex">
 
@@ -344,7 +356,7 @@
   
 <section class="moreInfo" id="more_info" aria-labelledby="more_info">
     
-    <div class="card">
+    <!-- <div class="card">
         
             <h2>Mackenzie's Priority</h2>
         <ol>
@@ -359,10 +371,13 @@
             <li>🔹 <strong>Stanford University</strong></li>
             <li>🔹 <strong>University of Pennsylvania</strong></li>
         </ol>
-    </div>
-    </section>
+    </div> -->
 
 
+        <ul id= "costList" class="cost-list"></ul>
+    
+
+</section>
 <footer>
     <address>
  
@@ -371,5 +386,6 @@
       USA
     </address>
   </footer>
+  <script src="/home_app.js"></script>
 </body>
 </html>
