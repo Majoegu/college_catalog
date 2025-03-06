@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,198 +12,220 @@
 </head>
 <body>
 
-   
-        <h1>Admin Panel</h1>
-        <button onclick="logout()">Logout</button>
+<h1>Admin Panel</h1>
+<button onclick="logout()">Logout</button>
 
-        <div class="container">
-        <h2>Add New University</h2>
-        <input type="text" id="name" placeholder="University Name">
-        <select id="status">
+<div class="container">
+    <h2>Add New University</h2>
+    <input type="text" id="name" placeholder="University Name">
+    <select id="status">
+        <option value="applied">Applied</option>
+        <option value="will apply">Will Apply</option>
+        <option value="considering">Considering</option>
+    </select>
+    <select id="category">
+        <option value="Target">Target</option>
+        <option value="Reach">Reach</option>
+        <option value="Safety">Safety</option>
+    </select>
+    <input type="text" id="ranking" placeholder="Ranking">
+
+    <label>Why this university?</label>
+    <ul id="whyThisUniversityList"></ul>
+    <button type="button" onclick="addListItem('whyThisUniversityList')">➕ Add Point</button>
+
+    <input type="text" id="programOfInterest" placeholder="Program">
+    <input type="text" id="tuition" placeholder="Tuition">
+    <input type="text" id="estimatedTotalCost" placeholder="Total Cost">
+    <input type="text" id="scholarships" placeholder="Scholarships">
+
+    <div class="list-section">
+        <div class="list-header">
+    <label>Dates</label>
+    <button type="button" onclick="addListItem('datesList')">➕ Add Dates</button>
+    </div>
+    <ul id="datesList"></ul>
+    </div>
+
+    <div class="list-section">
+        <div class="list-header">
+    <label>Career Impact</label>
+    <button type="button" onclick="addListItem('careerImpactList')">➕ Add Career Impact</button>
+    </div>
+    <ul id="careerImpactList"></ul>
+    </div>
+
+    <div class="list-section">
+        <div class="list-header">
+    <label>Pros</label>
+    <button type="button" onclick="addListItem('prosList')">➕ Add Pro</button>
+    </div>
+    <ul id="prosList"></ul>
+    </div>
+
+    <div class="list-section">
+        <div class="list-header">
+    <label>Cons</label>
+    <button type="button" onclick="addListItem('consList')">➕ Add Con</button>
+    </div>
+    <ul id="consList"></ul>
+    </div>
+    
+    <div class="list-section">
+        <div class="list-header">
+    <label>Sources</label>
+    <button type="button" onclick="addListItem('sourcesList')">➕ Add Sources</button>
+    </div>
+    <ul id="sourcesList"></ul>
+</div>
+
+    <input type="text" id="image" placeholder="Image URL">
+    <input type="text" id="cImage" placeholder="Campus Image URL">
+
+    <button onclick="addItem()">Add Item</button>
+</div>
+
+<ul id="itemList" class="item-list"></ul>
+
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeEditModal()">X</span>
+        <h2>Edit University</h2>
+        <input type="hidden" id="editItemId">
+        <input type="text" id="editName" placeholder="University Name">
+        <select id="editStatus">
             <option value="applied">Applied</option>
             <option value="will apply">Will Apply</option>
             <option value="considering">Considering</option>
         </select>
-        <select id="category">
+        <select id="editCategory">
             <option value="Target">Target</option>
             <option value="Reach">Reach</option>
             <option value="Safety">Safety</option>
         </select>
-        <input type="text" id="ranking" placeholder="Ranking (e.g., #3 in CS)">
-        <textarea id="whyThisUniversity" placeholder="Why this university?"></textarea>
-        <input type="text" id="programOfInterest" placeholder="Program">
-        <input type="text" id="tuition" placeholder="Tuition (e.g., $62,000/year)">
-        <input type="text" id="estimatedTotalCost" placeholder="Total Cost (e.g., ~$80,000/year)">
-        <input type="text" id="scholarships" placeholder="Scholarships (if any)">
-        <textarea id="dates" placeholder="Dates and deadlines"></textarea>
-        <textarea id="careerImpact" placeholder="Career/Alumni Impact"></textarea>
-        <textarea id="pros" placeholder="Pros"></textarea>
-        <textarea id="cons" placeholder="Cons"></textarea>
-        <input type="text" id="sources" placeholder="Sources (comma separated URLs)">
-        <input type="text" id="image" placeholder="Image URL (optional)">
-        <input type="text" id="cImage" placeholder="Campus Image URL">
-      
-        <button onclick="addItem()">Add Item</button>
+        <input type="text" id="editRanking" placeholder="Ranking">
 
-       
-    </div>
-    <div id="itemList"> 
-        <ul id="itemList" class="item-list"></ul>
-    </div>
+        <label>Why this university?</label>
+        <ul id="editWhyThisUniversityList"></ul>
+        <button type="button" onclick="addListItem('editWhyThisUniversityList')">➕ Add Point</button>
 
+        <input type="text" id="editProgram" placeholder="Program">
+        <input type="text" id="editTuition" placeholder="Tuition">
+        <input type="text" id="editTotalCost" placeholder="Total Cost">
+        <input type="text" id="editScholarships" placeholder="Scholarships">
 
-    <div id="editModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeEditModal()">X</span>
-            <h2>Edit University</h2>
-            <input type="hidden" id="editItemId">
-            <input type="text" id="editName" placeholder="University Name">
-            <select id="editStatus">
-                <option value="applied">Applied</option>
-                <option value="will apply">Will Apply</option>
-                <option value="considering">Considering</option>
-            </select>
-            <select id="editCategory">
-                <option value="Target">Target</option>
-                <option value="Reach">Reach</option>
-                <option value="Safety">Safety</option>
-            </select>
-            <input type="text" id="editRanking" placeholder="Ranking">
-            <textarea id="editWhy" placeholder="Why this university?"></textarea>
-            <input type="text" id="editProgram" placeholder="Program">
-            <input type="text" id="editTuition" placeholder="Tuition">
-            <input type="text" id="editTotalCost" placeholder="Total Cost">
-            <input type="text" id="editScholarships" placeholder="Scholarships">
-            <textarea id="editDates" placeholder="Dates and Deadlines"></textarea>
-            <textarea id="editCareer" placeholder="Career Impact"></textarea>
-            <textarea id="editPros" placeholder="Pros"></textarea>
-            <textarea id="editCons" placeholder="Cons"></textarea>
-            <input type="text" id="editSources" placeholder="Sources (comma separated URLs)">
-            <input type="text" id="editImage" placeholder="Logo Image URL">
-            <input type="text" id="editCImage" placeholder="Campus Image URL">
-           
-            <button onclick="saveEdit()">Save Changes</button>
+        <div class="list-section">
+            <div class="list-header">
+        <label>Dates</label>
+        <button type="button" onclick="addListItem('editDatesList')">➕ Add Date</button>
         </div>
-    </div>
+        <ul id="editDatesList"></ul>
+        </div>
 
-    <script>
-        async function fetchItems() {
-            const res = await fetch("/items");
-            const items = await res.json();
-            const itemList = document.getElementById("itemList");
-            itemList.innerHTML = "";
+        <div class="list-section">
+            <div class="list-header">
+        <label>Career Impact</label>
+        <button type="button" onclick="addListItem('editCareerImpactList')">➕ Add Career Impact</button>
+        </div>
+        <ul id="editCareerImpactList"></ul>
+        </div>
 
-            items.forEach(item => {
-                itemList.innerHTML += `
-                
-            <div class="item-text">
-                <strong>${item.name}</strong> - ${item.programOfInterest}
-                
-            
-            <button class="edit-btn" onclick="openEditModal(
-                '${item._id}', 
-                '${item.name}', 
-                '${item.status}', 
-                '${item.category}', 
-                '${item.ranking}', 
-                '${item.whyThisUniversity}', 
-                '${item.programOfInterest}', 
-                '${item.financialEstimate.tuition}', 
-                '${item.financialEstimate.estimatedTotalCost}', 
-                '${item.financialEstimate.scholarships}', 
-                '${item.dates}', 
-                '${item.careerImpact}', 
-                '${item.pros}', 
-                '${item.cons}', 
-                '${item.sources}', 
-                '${item.image}', 
-                '${item.cImage}',
-                
-            
-            )">Edit</button>
-            <button class="delete-btn" onclick="deleteItem('${item._id}')">Delete</button>
-            </div>
         
-    `;
-            });
-        }
+        <div class="list-section">
+            <div class="list-header">
+        <label>Pros</label>
+        <button type="button" onclick="addListItem('editProsList')">➕ Add Pro</button>
+        </div>
+        <ul id="editProsList"></ul>
+        </div>
+       
+        <div class="list-section">
+            <div class="list-header">
+        <label>Cons</label>
+        <button type="button" onclick="addListItem('editConsList')">➕ Add Con</button>
+        </div>
+        <ul id="editConsList"></ul>
+        </div>
+        
+        <div class="list-section">
+            <div class="list-header">
+        <label>Sources</label>
+        <button type="button" onclick="addListItem('editSourcesList')">➕ Add Sources</button>
+        </div>
+        <ul id="editSourcesList"></ul>
+        </div>
+       
 
-        function openEditModal(id,name, status, category, ranking, whyThisUniversity, programOfInterest, tuition, estimatedTotalCost, scholarships, dates, careerImpact, pros, cons, sources, image, cImage,appCost ) {
-            document.getElementById("editItemId").value = id;
-            document.getElementById("editName").value = name;
-            document.getElementById("editStatus").value = status;
-            document.getElementById("editCategory").value = category;
-            document.getElementById("editRanking").value = ranking;
-            document.getElementById("editWhy").value = Array.isArray(whyThisUniversity) ? whyThisUniversity.join("|") : whyThisUniversity.replace(/,/g, "|");
-            document.getElementById("editProgram").value = programOfInterest; 
-            document.getElementById("editTuition").value = tuition;
-            document.getElementById("editTotalCost").value = estimatedTotalCost;
-            document.getElementById("editScholarships").value = scholarships;
-            document.getElementById("editDates").value = Array.isArray(dates) ? dates.join("|") : dates.replace(/,/g, "|");
-            document.getElementById("editCareer").value = Array.isArray(careerImpact) ? careerImpact.join("|") : careerImpact.replace(/,/g, "|");
-            document.getElementById("editPros").value = Array.isArray(pros) ? pros.join("|") : pros.replace(/,/g, "|");
-            document.getElementById("editCons").value = Array.isArray(cons) ? cons.join("|") : cons.replace(/,/g, "|");
-            document.getElementById("editSources").value = Array.isArray(sources) ? sources.join("|") : sources.replace(/,/g, "|");
-            document.getElementById("editImage").value = image;
-            document.getElementById("editCImage").value = cImage;
-            document.getElementById("editModal").style.display = "flex";
-        }
+        <input type="text" id="editImage" placeholder="Logo Image URL">
+        <input type="text" id="editCImage" placeholder="Campus Image URL">
 
+        <button onclick="saveEdit()">Save Changes</button>
+    </div>
+</div>
 
+<script>
+    async function fetchItems() {
+        const res = await fetch("/items");
+        const items = await res.json();
+        const itemList = document.getElementById("itemList");
+        itemList.innerHTML = "";
 
-        function closeEditModal() {
-            document.getElementById("editModal").style.display = "none";
-        }
+        items.forEach(item => {
+            itemList.innerHTML += `
+                <li>
+                    <strong>${item.name}</strong> - ${item.programOfInterest}
+                    <button onclick='openEditModal(${JSON.stringify(item)})'>Edit</button>
+                    <button onclick='deleteItem("${item._id}")'>Delete</button>
+                </li>`;
+        });
+    }
 
-    
+    function openEditModal(item) {
+        document.getElementById("editItemId").value = item._id;
+        document.getElementById("editName").value = item.name;
+        document.getElementById("editStatus").value = item.status;
+        document.getElementById("editCategory").value = item.category;
+        document.getElementById("editRanking").value = item.ranking;
+        document.getElementById("editProgram").value = item.programOfInterest;
+        document.getElementById("editTuition").value = item.financialEstimate.tuition;
+        document.getElementById("editTotalCost").value = item.financialEstimate.estimatedTotalCost;
+        document.getElementById("editScholarships").value = item.financialEstimate.scholarships;
+        document.getElementById("editImage").value = item.image;
+        document.getElementById("editCImage").value = item.cImage;
 
-        async function saveEdit() {
-    const id = document.getElementById("editItemId").value;
-    const updatedItem = {
-        name: document.getElementById("editName").value,
-        status: document.getElementById("editStatus").value,
-        category: document.getElementById("editCategory").value,
-        ranking: document.getElementById("editRanking").value,
-        whyThisUniversity: document.getElementById("editWhy").value
-            .split("|")
-            .map(item => item.trim())
-            .filter(item => item !== ""),
-        programOfInterest: document.getElementById("editProgram").value,
-        financialEstimate: {
+        populateList('editWhyThisUniversityList', item.whyThisUniversity);
+        populateList('editDatesList', item.dates);
+        populateList('editCareerImpactList', item.careerImpact);
+        populateList('editProsList', item.pros);
+        populateList('editConsList', item.cons);
+        populateList('editSourcesList', item.sources);
+
+        document.getElementById("editModal").style.display = "flex";
+    }
+
+    async function saveEdit() {
+         const id = document.getElementById("editItemId").value;
+         const updatedItem = {
+         name: document.getElementById("editName").value,
+         status: document.getElementById("editStatus").value,
+         category: document.getElementById("editCategory").value,
+         ranking: document.getElementById("editRanking").value,
+         whyThisUniversity: getListItems('editWhyThisUniversityList'),
+         programOfInterest: document.getElementById("editProgram").value,
+         financialEstimate: {
             tuition: document.getElementById("editTuition").value,
             estimatedTotalCost: document.getElementById("editTotalCost").value,
             scholarships: document.getElementById("editScholarships").value
         },
-  
-        dates: document.getElementById("editDates").value
-            .split("|")
-            .map(item => item.trim())
-            .filter(item => item !== ""),
+         dates: getListItems('editDatesList'),
+         careerImpact: getListItems('editCareerImpactList'),
+         pros: getListItems('editProsList'),
+         cons: getListItems('editConsList'),
+         sources: getListItems('editSourcesList'),
+         image: document.getElementById("editImage").value,
+         cImage: document.getElementById("editCImage").value
+};
 
-        careerImpact: document.getElementById("editCareer").value
-            .split("|")
-            .map(item => item.trim())
-            .filter(item => item !== ""),
-
-      
-        pros: document.getElementById("editPros").value
-            .split("|")  // Convert string to array
-            .map(item => item.trim()) // Trim whitespace from each entry
-            .filter(item => item !== ""), // Remove empty values
-        cons: document.getElementById("editCons").value
-            .split("|")
-            .map(item => item.trim())
-            .filter(item => item !== ""),
-
-        sources: document.getElementById("editSources").value
-            .split("|")
-            .map(item => item.trim())
-            .filter(item => item !== ""),
-
-        image: document.getElementById("editImage").value,
-        cImage: document.getElementById("editCImage").value,
-       
-    };
 
     try {
         const res = await fetch(`/admin/items/${id}`, {
@@ -217,117 +243,40 @@
     }
 }
 
-  
-
-        async function addItem() {
-            const name = document.getElementById("name").value;
-            const cImage = document.getElementById("cImage").value;
-            const status = document.getElementById("status").value;
-            const category = document.getElementById("category").value;
-            const ranking = document.getElementById("ranking").value;
-            const whyThisUniversity= document.getElementById("whyThisUniversity").value
-             .split("|")
-             .map(item => item.trim())
-             .filter(item => item !== "");
-            const programOfInterest = document.getElementById("programOfInterest").value;
-            const tuition = document.getElementById("tuition").value;
-            const estimatedTotalCost = document.getElementById("estimatedTotalCost").value;
-            const scholarships = document.getElementById("scholarships").value;
-     
-            const dates = document.getElementById("dates").value
-             .split("|")
-             .map(item => item.trim())
-             .filter(item => item !== "");
-         
-         
-            const careerImpact = document.getElementById("careerImpact").value
-             .split("|")
-             .map(item => item.trim())
-             .filter(item => item !== "");
-      
-
-            const pros = document.getElementById("pros").value
-             .split("|")
-             .map(item => item.trim())
-             .filter(item => item !== "");
-
-             const cons = document.getElementById("cons").value
-             .split("|")
-             .map(item => item.trim())
-              .filter(item => item !== "");
-
-              const sources = document.getElementById("sources").value
-             .split("|")
-             .map(item => item.trim())
-              .filter(item => item !== "");
-
-            const image = document.getElementById("image").value;
-    
-            
-            
-            const newItem = {
-                name,
-                status,
-                category,
-                ranking,
-                whyThisUniversity,
-                programOfInterest,
-                financialEstimate: {
-                    tuition,
-                    estimatedTotalCost,
-                    scholarships
-                },
-                dates,
-                careerImpact,
-                pros,
-                cons,
-                sources,
-                image,
-                cImage,
-               
-    };
-
-
-    try {
-        const res = await fetch("/admin/items", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(newItem)
-        });
-
-        const data = await res.json();
-        alert(data.message || "University added successfully!");
-
-        // Clear input fields after adding
-        document.querySelectorAll("input, textarea").forEach(input => input.value = "");
-
-        // Refresh the list
-        fetchItems();
-    } catch (error) {
-        console.error("Error adding item:", error);
+    function populateList(listId, items = []) {
+        const ul = document.getElementById(listId);
+        ul.innerHTML = "";
+        items.forEach(item => addListItem(listId, item));
     }
-}
 
+    function addListItem(listId, value = "") {
+        const li = document.createElement("li");
+        li.innerHTML = `<input value="${value}"><button onclick="this.parentElement.remove()">❌</button>`;
+        document.getElementById(listId).appendChild(li);
+    }
 
-        async function deleteItem(id) {
+    
+    async function deleteItem(id) {
             const res = await fetch(`/admin/items/${id}`, { method: "DELETE" });
             const data = await res.json();
             // alert(data.message);
             fetchItems();
         }
+    
+    function closeEditModal() {
+            document.getElementById("editModal").style.display = "none";
+        }
 
-        async function logout() {
+    async function logout() {
             await fetch("/admin/logout", { method: "POST" });
             alert("Logged out successfully");
             window.location.href = "/login";
         }
 
-        window.onload = fetchItems;
-    </script>
+
+
+    window.onload = fetchItems;
+</script>
 
 </body>
 </html>
-
-
-
-
