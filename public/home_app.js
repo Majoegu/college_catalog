@@ -18,6 +18,9 @@ function formatList(items) {
         function openModal(title, status, category, ranking, whyThisUniversity, programOfInterest, tuition, totalCost, scholarships, dates, career, pros, cons, image, cImage, sources,) {
             console.log("🚀 Dates received:", dates);
             console.log("🚀 Career received:", career);
+            console.log("🚀 pros received:", pros);
+            console.log("🚀 cons received:", cons);
+            console.log("🚀 whyThisUniversity received:", whyThisUniversity);
             // Ensure pros and cons are arrays
             if (typeof pros === "string") pros = JSON.parse(pros);
             if (typeof cons === "string") cons = JSON.parse(cons);
